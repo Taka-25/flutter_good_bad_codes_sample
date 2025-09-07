@@ -1,0 +1,41 @@
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "name": "Debug good",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--dart-define-from-file=dart_defines/good.env"
+            ]
+        },
+          {
+            "name": "Release good",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "args": [
+                "--dart-define-from-file=dart_defines/good.env"
+            ]
+        },
+        {
+            "name": "Debug bad",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--dart-define-from-file=dart_defines/bad.env"
+            ]
+        },
+        {
+            "name": "Release bad",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "args": [
+                "--dart-define-from-file=dart_defines/bad.env"
+            ]
+        },
+    ]
+}

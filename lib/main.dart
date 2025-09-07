@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
+  const flavor = String.fromEnvironment('flavor');
+  print(flavor);
 }
 
 class MyApp extends StatelessWidget {
