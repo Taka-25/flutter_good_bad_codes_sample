@@ -4,7 +4,7 @@ import 'package:flutter_good_bad_codes_sample/src/utils/logger/logger.dart';
 void main() {
   runApp(const MyApp());
   const flavor = String.fromEnvironment('flavor');
-  Log.d(flavor);
+  Log.d("flavor: $flavor");
 }
 
 class MyApp extends StatelessWidget {
