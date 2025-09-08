@@ -139,6 +139,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  pedantic_mono:
+    dependency: "direct main"
+    description:
+      name: pedantic_mono
+      sha256: "1a8b115cbe8fbcd445d94a7a038c4a857b278c72ca582b194e94790e2dd2f857"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.33.0"
   sky_engine:
     dependency: transitive
     description: flutter
