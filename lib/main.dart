@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_good_bad_codes_sample/src/utils/logger.dart';
+import 'package:flutter_good_bad_codes_sample/src/utils/logger/logger.dart';
 
 void main() {
   runApp(const MyApp());
