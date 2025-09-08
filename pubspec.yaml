@@ -12,6 +12,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   pedantic_mono: ^1.33.0
   logger: ^2.6.1
+  http: ^1.5.0
 
 dev_dependencies:
   flutter_test:
