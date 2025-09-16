@@ -62,6 +62,11 @@ class GiftPoint {
   }
 }
 
+// 5.5, 5.6
+// Bad: コンストラクタを公開しているせいで、関連ロジックが分散し低凝集になっている
+GiftPoint standardMemberShipPoint = GiftPoint(3000);
+GiftPoint premiumMemberShipPoint = GiftPoint(5000);
+
 class ConsumptionPoint {
   static final int _MIN_POINT = 0;
   final int value;
