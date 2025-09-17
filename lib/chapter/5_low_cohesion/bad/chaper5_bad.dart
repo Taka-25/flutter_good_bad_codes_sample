@@ -78,6 +78,55 @@ class ConsumptionPoint {
   }
 }
 
-// 5.2
+// 5.10, 5.11
+// Bad: 関連のないメソッドが1つのクラスに集約されており、低凝集になっている
+class Common {
+  // 税込み金額を計算する
+  static BigDecimal calcAmountIncludingTax(
+    BigDecimal amountExcludingTax,
+    BigDecimal taxRate,
+  ) {
+    return amountExcludingTax.multiply(taxRate);
+  }
+
+  // ユーザーが退会済みの場合 true
+  static bool hasResigned(User user) {
+    // 省略
+    return user.resignationDate != null;
+  }
+
+  static void createOrder(Product product) {
+    // 省略
+  }
+
+  // 有効な電話番号である場合 true
+  static bool isValidPhoneNumber(String phoneNumber) {
+    // 省略
+    return true;
+  }
+}
+
+// 5.10, 5.11用クラス
+class BigDecimal {
+  final double value;
+
+  BigDecimal(this.value);
+
+  BigDecimal multiply(BigDecimal other) {
+    return BigDecimal(value * other.value);
+  }
+}
+
+// 5.10, 5.11用クラス
+class User {
+  final DateTime? resignationDate;
+
+  User(this.resignationDate);
+}
+
+// 5.10, 5.11用クラス
+class Product {
+  // 省略
+}
 
 void main() {}
