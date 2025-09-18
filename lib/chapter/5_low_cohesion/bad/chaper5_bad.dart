@@ -129,4 +129,48 @@ class Product {
   // 省略
 }
 
+// 5.14
+// Bad: 引数の変更をしている
+class ActorManager {
+  void shift(Location location, int shiftX, int shiftY) {
+    location.x += shiftX;
+    location.y += shiftY;
+  }
+}
+
+// 5.15
+// Bad: まったく同じクラスが別のクラスに存在してしまっている
+class SpecialAttackManager {
+  void shift(Location location, int shiftX, int shiftY) {
+    location.x += shiftX;
+    location.y += shiftY;
+  }
+}
+
+// 5.14, 5.15用クラス
+class Location {
+  int x;
+  int y;
+
+  Location(this.x, this.y);
+}
+
+// 5.17
+// Bad: 引数変更していることが外部からわからない
+class DiscountManager {
+  void set(MoneyData money) {
+    money.amount -= 2000;
+    if (money.amount < 0) {
+      money.amount = 0;
+    }
+  }
+}
+
+// 5.17用クラス
+class MoneyData {
+  int amount;
+
+  MoneyData(this.amount);
+}
+
 void main() {}
