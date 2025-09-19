@@ -213,4 +213,15 @@ class PrimitiveCommon {
   }
 }
 
+// 5.25
+// Bad: プリミティブ型執着。5.24のdiscountedPrice同様にregularPriceのバリデーションが重複してしまっている
+class Util {
+  bool isFairPrice(int regularPrice) {
+    if (regularPrice < 0) {
+      throw ArgumentError('価格が0以上ではありません。');
+    }
+    return regularPrice >= 1000;
+  }
+}
+
 void main() {}
