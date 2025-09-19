@@ -199,4 +199,18 @@ class MagicPoint {
   }
 }
 
+// 5.24
+// Bad: プリミティブ型執着。このように実装すると、重複コードや演算ロジックががあちこちに無秩序に実装されやすくなる
+class PrimitiveCommon {
+  int discountedPrice(int regularPrice, double discountRate) {
+    if (regularPrice < 0) {
+      throw ArgumentError('価格が0以上ではありません。');
+    }
+    if (discountRate < 0.0) {
+      throw ArgumentError('割引率が0以上ではありません。');
+    }
+    return (regularPrice * (1.0 - discountRate)).toInt();
+  }
+}
+
 void main() {}
