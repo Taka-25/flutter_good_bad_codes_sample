@@ -2,6 +2,8 @@
 // 注文を管理するクラス
 // ignore_for_file: non_constant_identifier_names, slash_for_doc_comments
 
+import 'dart:math';
+
 class OrderManager {
   static int add(int moneyAmount1, int moneyAmount2) {
     return moneyAmount1 + moneyAmount2;
@@ -171,6 +173,30 @@ class MoneyData {
   int amount;
 
   MoneyData(this.amount);
+}
+
+// 5.23
+// Bad: メソッド引数が多すぎる。このような場合、不注意で正しくない値を代入してしまう可能性が高まる
+class MagicPoint {
+  /**
+   * 魔法力を回復する
+   * @param currentMagicPoint 現在の魔法力残量
+   * @param originalMagicPoint オリジナルの魔法力の最大値
+   * @param maxMagicPointIncrements 魔法力最大値の増分
+   * @return 回復後の魔法力残量
+   */
+  int recoverMagicPoint(
+    int currentMagicPoint,
+    int originalMagicPoint,
+    List<int> maxMagicPointIncrements,
+    int recoveryAmount,
+  ) {
+    int currentMaxMagicPoint = originalMagicPoint;
+    for (int each in maxMagicPointIncrements) {
+      currentMaxMagicPoint += each;
+    }
+    return min(currentMagicPoint + recoveryAmount, currentMaxMagicPoint);
+  }
 }
 
 void main() {}
