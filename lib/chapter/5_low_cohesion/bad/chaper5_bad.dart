@@ -222,4 +222,26 @@ class Util {
   }
 }
 
+// 5.30 メソッドチェイン（.で数珠つなぎにして戻り値の要素に次々アクセスすること）
+// Bad: メソッドチェインになっている。armor以外にもにも代入するコードをどこでも書けてしまい、低凝集になりやすい
+class Party {
+  // ignore: prefer_typing_uninitialized_variables
+  final party;
+
+  Party(this.party);
+  /**
+   * 鎧を装備する
+   * @param memberId 装備変更したいメンバーのID
+   * @param newArmor 装備する鎧
+   */
+  void equipArmor(int memberId, Armor newArmor) {
+    if (party.members[memberId].equipments.canChange) {
+      party.members[memberId].equipments.armor = newArmor;
+    }
+  }
+}
+
+// 5.30用クラス
+class Armor {}
+
 void main() {}
