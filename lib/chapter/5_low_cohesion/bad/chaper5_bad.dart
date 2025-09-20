@@ -12,9 +12,7 @@ class OrderManager {
 
 // 5.1.3
 class PaymentManager {
-  int _discountRate;
-
-  PaymentManager(this._discountRate);
+  PaymentManager();
 
   int add(int moneyAmount1, int moneyAmount2) {
     return moneyAmount1 + moneyAmount2;
