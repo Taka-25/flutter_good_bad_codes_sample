@@ -28,8 +28,36 @@ class _GiftPoint {
   }
 }
 
+// 5.12
+// Good: オブジェクト指向設計の基本にもとづき、関連ロジックをクラスにまとめている
+// （安易に共通処理クラスを実装していない）
+class AmountIncludingTax {
+  final BigDecimal value;
+
+  AmountIncludingTax(
+    final AmountIncludingTax amountIncludingTax,
+    final TaxRate taxRate,
+  ) : value = amountIncludingTax.value.multiply(taxRate.value);
+}
+
+class BigDecimal {
+  final double value;
+  BigDecimal(this.value);
+
+  BigDecimal multiply(BigDecimal other) {
+    return BigDecimal(value * other.value);
+  }
+}
+
+class TaxRate {
+  final BigDecimal value;
+  TaxRate(this.value);
+}
+
 void main() {
-  //5.7
+  // 5.8, 5.9
+  // ignore: unused_local_variable
   _GiftPoint standardMemberShipPoint = _GiftPoint.forStandardMembership();
+  // ignore: unused_local_variable
   _GiftPoint premiumMemberShipPoint = _GiftPoint.forPremiumMembership();
 }
