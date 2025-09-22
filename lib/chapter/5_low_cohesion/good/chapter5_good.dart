@@ -40,6 +40,7 @@ class AmountIncludingTax {
   ) : value = amountIncludingTax.value.multiply(taxRate.value);
 }
 
+// 5.12用クラス
 class BigDecimal {
   final double value;
   BigDecimal(this.value);
@@ -49,6 +50,7 @@ class BigDecimal {
   }
 }
 
+// 5.12用クラス
 class TaxRate {
   final BigDecimal value;
   TaxRate(this.value);
