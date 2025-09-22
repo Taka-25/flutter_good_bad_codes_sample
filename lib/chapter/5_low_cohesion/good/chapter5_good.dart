@@ -3,6 +3,8 @@
 // 5.7
 // Good: コンストラクタがprivateで、目的別のファクトリメソッドを用意している
 //コンストラクタが非公開であることで、関連ロジックの分散を防いでいる
+import 'package:flutter_good_bad_codes_sample/src/utils/logger/logger.dart';
+
 class _GiftPoint {
   static final int _MIN_POINT = 0;
   static final int STANDARD_MEMBERSHIP_POINT = 3000;
@@ -55,6 +57,26 @@ class TaxRate {
   final BigDecimal value;
   TaxRate(this.value);
 }
+
+// 5.13
+// Good: 横断的関心事であるログ出力をstaticメソッドにして呼び出している
+class ShoppingCart {
+  final Product product;
+  final products = [];
+
+  ShoppingCart(this.product);
+
+  void add(final Product product) {
+    try {
+      products.add(product);
+    } catch (e) {
+      Log.e("問題が発生しました。買い物かごに商品を追加できません");
+    }
+  }
+}
+
+// 5.13用クラス
+class Product {}
 
 void main() {
   // 5.8, 5.9
