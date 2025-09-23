@@ -78,6 +78,21 @@ class ShoppingCart {
 // 5.13用クラス
 class Product {}
 
+// 5.18
+// Good: 引数を変更しない構造になっている
+class Location {
+  final int x;
+  final int y;
+
+  Location(this.x, this.y);
+
+  Location shift(final int shiftX, final int shiftY) {
+    final int nextX = x + shiftX;
+    final int nextY = x + shiftY;
+    return Location(nextX, nextY);
+  }
+}
+
 void main() {
   // 5.8, 5.9
   // ignore: unused_local_variable
