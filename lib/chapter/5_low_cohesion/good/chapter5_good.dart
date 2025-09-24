@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, unused_element, slash_for_doc_comments
+// ignore_for_file: non_constant_identifier_names, unused_element, slash_for_doc_comments, constant_identifier_names
 
 // 5.7
 // Good: コンストラクタがprivateで、目的別のファクトリメソッドを用意している
@@ -91,6 +91,30 @@ class Location {
     final int nextY = x + shiftY;
     return Location(nextX, nextY);
   }
+}
+
+// 5.21
+// Good: ヒットポイントを値オブジェクトとして設定している
+class HitPoint {
+  static const int _MIN = 0;
+  // ignore: unused_field
+  final int _value;
+  final MaxHitPoint _maxHitPoint;
+
+  HitPoint(int value, MaxHitPoint maxHitPoint)
+    : assert(value < _MIN, "0以上を指定してください"),
+      _value = value,
+      _maxHitPoint = maxHitPoint;
+
+  HitPoint RecoverCompletely() {
+    return HitPoint(_maxHitPoint.value, _maxHitPoint);
+  }
+}
+
+// 5.21用クラス
+class MaxHitPoint {
+  final int value;
+  MaxHitPoint(this.value);
 }
 
 void main() {
