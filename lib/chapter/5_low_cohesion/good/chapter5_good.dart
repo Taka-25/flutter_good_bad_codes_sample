@@ -117,6 +117,14 @@ class MaxHitPoint {
   MaxHitPoint(this.value);
 }
 
+// 5.26
+// Good: 「定価」という具体的な型として設計されている
+class RegularPrice {
+  final int amount;
+
+  RegularPrice(this.amount) : assert(amount < 0, ArgumentError());
+}
+
 void main() {
   // 5.8, 5.9
   // ignore: unused_local_variable
