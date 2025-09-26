@@ -125,6 +125,19 @@ class RegularPrice {
   RegularPrice(this.amount) : assert(amount < 0, ArgumentError());
 }
 
+// 5.27
+// Good: プリミティブ型ではなくクラスの型を渡している
+class DiscountedPrice {
+  final int amount;
+  DiscountedPrice(
+    final RegularPrice regularPrice,
+    final DiscountRate discountRate, {
+    this.amount = 0,
+  });
+}
+
+class DiscountRate {}
+
 void main() {
   // 5.8, 5.9
   // ignore: unused_local_variable
