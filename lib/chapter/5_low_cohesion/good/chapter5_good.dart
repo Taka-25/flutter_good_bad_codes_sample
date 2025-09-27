@@ -3,6 +3,8 @@
 // 5.7
 // Good: コンストラクタがprivateで、目的別のファクトリメソッドを用意している
 //コンストラクタが非公開であることで、関連ロジックの分散を防いでいる
+import 'dart:nativewrappers/_internal/vm/lib/math_patch.dart';
+
 import 'package:flutter_good_bad_codes_sample/src/utils/logger/logger.dart';
 
 class _GiftPoint {
@@ -138,6 +140,37 @@ class DiscountedPrice {
 
 // 5.27用クラス
 class DiscountRate {}
+
+// 5.29
+// Good: 魔法力に関するロジックをカプセル化している
+class MagicPoint {
+  int _currentAmount;
+  // ignore: prefer_final_fields
+  int _originalMaxAmount;
+  final List<int> _maxIncrements;
+
+  MagicPoint(this._currentAmount, this._originalMaxAmount, this._maxIncrements);
+
+  int current() {
+    return _currentAmount;
+  }
+
+  int max() {
+    int amount = _originalMaxAmount;
+    for (int each in _maxIncrements) {
+      amount += each;
+    }
+    return amount;
+  }
+
+  void recover(final int recoveryAmount) {
+    _currentAmount = min(_currentAmount + recoveryAmount, max());
+  }
+
+  void consume(final int consumeAmount) {
+    // 省略
+  }
+}
 
 void main() {
   // 5.8, 5.9
