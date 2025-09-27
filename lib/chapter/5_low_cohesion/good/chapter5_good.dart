@@ -136,6 +136,7 @@ class DiscountedPrice {
   });
 }
 
+// 5.27用クラス
 class DiscountRate {}
 
 void main() {
