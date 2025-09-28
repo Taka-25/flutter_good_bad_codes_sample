@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, unused_element, slash_for_doc_comments, constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, unused_element, slash_for_doc_comments, constant_identifier_names, unused_field
 
 // 5.7
 // Good: コンストラクタがprivateで、目的別のファクトリメソッドを用意している
@@ -170,6 +170,33 @@ class MagicPoint {
   void consume(final int consumeAmount) {
     // 省略
   }
+}
+
+// 5.31
+// Good: 詳細なロジックを呼ぶ側ではなく、呼ばれる側に実装している
+class Equipments {
+  final bool _canChange;
+  Equipment _head;
+  Equipment _armor;
+  Equipment _arm;
+  Equipments(this._canChange, this._head, this._armor, this._arm);
+
+  void equipArmor(final Equipment newArmor) {
+    if (_canChange) {
+      _armor = newArmor;
+    }
+  }
+
+  void deactivateAll() {
+    _head = Equipment.EMPTY;
+    _armor = Equipment.EMPTY;
+    _arm = Equipment.EMPTY;
+  }
+}
+
+// 5.31用クラス
+class Equipment {
+  static Equipment EMPTY = Equipment();
 }
 
 void main() {
