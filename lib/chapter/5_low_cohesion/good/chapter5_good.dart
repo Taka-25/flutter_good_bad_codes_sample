@@ -98,7 +98,6 @@ class Location {
 // Good: ヒットポイントを値オブジェクトとして設定している
 class HitPoint {
   static const int _MIN = 0;
-  // ignore: unused_field
   final int _value;
   final MaxHitPoint _maxHitPoint;
 
