@@ -32,6 +32,7 @@ class BadMember {
   void chant(BadMagic magic) {}
 }
 
+// 6.1用クラス
 class BadMagic {
   final int costMagicPoint;
   BadMagic(this.costMagicPoint);
