@@ -1,4 +1,3 @@
-// 6.3
 // Good: 早期returnでネスト解消している
 // これにより可読性・保守性が上がっている
 class MagicAttack {
@@ -18,7 +17,8 @@ class MagicAttack {
   //   }
   // }
 
-  void magicAttack() {
+  // 6.3
+  void magicAttackA() {
     if (member.hitPoint <= 0) return;
 
     if (member.canAct) {
@@ -27,6 +27,20 @@ class MagicAttack {
         member.chant(magic);
       }
     }
+  }
+
+  // 6.4
+  // Good: 6.3を改善し、すべてのネストを解消している
+  // ネスト解消することで、条件ロジックと実行ロジックを分離できる
+  void magicAttackB() {
+    if (member.hitPoint <= 0) return;
+
+    if (!member.canAct) return;
+
+    if (member.magicPoint < magic.costMagicPoint) return;
+
+    member.consumerMagicPoint(magic.costMagicPoint);
+    member.chant(magic);
   }
 }
 
