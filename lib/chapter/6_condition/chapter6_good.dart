@@ -39,6 +39,10 @@ class MagicAttack {
 
     if (member.magicPoint < magic.costMagicPoint) return;
 
+    // 6.5
+    // Good: 早期returnでネスト解消しているおかげで、条件追加が容易
+    if (member.technicalPoint < magic.costTechnicalPoint) return;
+
     member.consumerMagicPoint(magic.costMagicPoint);
     member.chant(magic);
   }
@@ -49,7 +53,8 @@ class Member {
   final int hitPoint;
   final bool canAct;
   final int magicPoint;
-  Member(this.hitPoint, this.canAct, this.magicPoint);
+  final int technicalPoint; // 6.5
+  Member(this.hitPoint, this.canAct, this.magicPoint, this.technicalPoint);
 
   // 6.3用メソッド
   void consumerMagicPoint(int magicPoint) {}
@@ -61,5 +66,6 @@ class Member {
 // 6.3用クラス
 class Magic {
   final int costMagicPoint;
-  Magic(this.costMagicPoint);
+  final int costTechnicalPoint; // 6.5
+  Magic(this.costMagicPoint, this.costTechnicalPoint);
 }
