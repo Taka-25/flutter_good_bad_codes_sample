@@ -45,6 +45,10 @@ class MagicAttack {
 
     member.consumerMagicPoint(magic.costMagicPoint);
     member.chant(magic);
+
+    // 6.6
+    // Good: 早期returnでネスト解消しているおかげで、実行ロジックの追加も容易
+    member.gainTechnicalPoint(magic.incrementTechnicalPoint);
   }
 }
 
@@ -54,6 +58,7 @@ class Member {
   final bool canAct;
   final int magicPoint;
   final int technicalPoint; // 6.5
+
   Member(this.hitPoint, this.canAct, this.magicPoint, this.technicalPoint);
 
   // 6.3用メソッド
@@ -61,11 +66,19 @@ class Member {
 
   // 6.3用メソッド
   void chant(Magic magic) {}
+
+  // 6.6
+  void gainTechnicalPoint(int technicalPoint) {}
 }
 
 // 6.3用クラス
 class Magic {
   final int costMagicPoint;
   final int costTechnicalPoint; // 6.5
-  Magic(this.costMagicPoint, this.costTechnicalPoint);
+  final int incrementTechnicalPoint; // 6.6
+  Magic(
+    this.costMagicPoint,
+    this.costTechnicalPoint,
+    this.incrementTechnicalPoint,
+  );
 }
