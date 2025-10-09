@@ -99,15 +99,25 @@ class HealthCondition {
 
     // 6.8
     // Good: else句を早期returnに置き換えており、可読性が改善している
-    if (hitPointRate == 0) {
-      return HealthConditionEnum.dead;
-    } else if (hitPointRate < 0.3) {
-      return HealthConditionEnum.danger;
-    } else if (hitPointRate < 0.5) {
-      return HealthConditionEnum.caution;
-    } else {
-      return HealthConditionEnum.fine;
-    }
+    // if (hitPointRate == 0) {
+    //   return HealthConditionEnum.dead;
+    // } else if (hitPointRate < 0.3) {
+    //   return HealthConditionEnum.danger;
+    // } else if (hitPointRate < 0.5) {
+    //   return HealthConditionEnum.caution;
+    // } else {
+    //   return HealthConditionEnum.fine;
+    // }
+
+    // 6.9
+    // Good: else句を用いずreturnすることで、さらに可読性が改善している
+    if (hitPointRate == 0) return HealthConditionEnum.dead;
+
+    if (hitPointRate < 0.3) return HealthConditionEnum.danger;
+
+    if (hitPointRate < 0.5) return HealthConditionEnum.caution;
+
+    return HealthConditionEnum.fine;
   }
 }
 
