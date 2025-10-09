@@ -23,7 +23,9 @@ class BadMember {
   final int hitPoint;
   final bool canAct;
   final int magicPoint;
-  BadMember(this.hitPoint, this.canAct, this.magicPoint);
+  final int maxHitPoint; // 6.7用の変数
+
+  BadMember(this.hitPoint, this.canAct, this.magicPoint, this.maxHitPoint);
 
   // 6.1用メソッド
   void consumerMagicPoint(int magicPoint) {}
@@ -37,3 +39,29 @@ class BadMagic {
   final int costMagicPoint;
   BadMagic(this.costMagicPoint);
 }
+
+// 6.7
+// Bad: else句が多すぎて可読性が低い
+class BadHealthCondition {
+  const BadHealthCondition();
+
+  BadHealthConditionEnum getHealthConditionByHitPointRate(BadMember member) {
+    final hitPointRate = member.hitPoint / member.maxHitPoint;
+
+    BadHealthConditionEnum currentHealthCondition;
+
+    if (hitPointRate == 0) {
+      currentHealthCondition = BadHealthConditionEnum.dead;
+    } else if (hitPointRate < 0.3) {
+      currentHealthCondition = BadHealthConditionEnum.danger;
+    } else if (hitPointRate < 0.5) {
+      currentHealthCondition = BadHealthConditionEnum.caution;
+    } else {
+      currentHealthCondition = BadHealthConditionEnum.fine;
+    }
+    return currentHealthCondition;
+  }
+}
+
+// 6.7用enum
+enum BadHealthConditionEnum { dead, danger, caution, fine }
