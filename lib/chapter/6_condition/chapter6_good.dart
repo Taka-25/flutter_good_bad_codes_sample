@@ -58,8 +58,15 @@ class Member {
   final bool canAct;
   final int magicPoint;
   final int technicalPoint; // 6.5
+  final int maxHitPoint;
 
-  Member(this.hitPoint, this.canAct, this.magicPoint, this.technicalPoint);
+  Member(
+    this.hitPoint,
+    this.canAct,
+    this.magicPoint,
+    this.technicalPoint,
+    this.maxHitPoint,
+  );
 
   // 6.3用メソッド
   void consumerMagicPoint(int magicPoint) {}
@@ -82,3 +89,27 @@ class Magic {
     this.incrementTechnicalPoint,
   );
 }
+
+// 6.8
+class HealthCondition {
+  const HealthCondition();
+
+  HealthConditionEnum getHealthConditionByHitPointRate(Member member) {
+    final hitPointRate = member.hitPoint / member.maxHitPoint;
+
+    // 6.8
+    // Good: else句を早期returnに置き換えており、可読性が改善している
+    if (hitPointRate == 0) {
+      return HealthConditionEnum.dead;
+    } else if (hitPointRate < 0.3) {
+      return HealthConditionEnum.danger;
+    } else if (hitPointRate < 0.5) {
+      return HealthConditionEnum.caution;
+    } else {
+      return HealthConditionEnum.fine;
+    }
+  }
+}
+
+// 6.8用enum
+enum HealthConditionEnum { dead, danger, caution, fine }
