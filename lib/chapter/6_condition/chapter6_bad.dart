@@ -65,3 +65,6 @@ class BadHealthCondition {
 
 // 6.7用enum
 enum BadHealthConditionEnum { dead, danger, caution, fine }
+
+// 6.10
+enum BadMagicType { fire, shiden }
