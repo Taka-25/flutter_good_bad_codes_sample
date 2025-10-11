@@ -141,6 +141,12 @@ class BadMagicManager {
       case BadMagicType.shiden:
         attackPower = 50 + (member.agility * 1.5).toInt();
         break;
+
+      // 6.16
+      // Bad: attackPowerのs場合のケースが実装されていない
+      // (Dartは未実装だとエラーになるが、Javaではエラーが出ないことによる)
+      case BadMagicType.hellFire:
+        throw UnimplementedError();
     }
 
     return attackPower;
