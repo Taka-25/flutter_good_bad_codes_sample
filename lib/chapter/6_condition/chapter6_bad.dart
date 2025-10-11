@@ -76,7 +76,7 @@ class BadHealthCondition {
 enum BadHealthConditionEnum { dead, danger, caution, fine }
 
 // 6.10
-enum BadMagicType { fire, shiden }
+enum BadMagicType { fire, shiden, hellFire }
 
 // 6.11
 // Bad: switch文で表示名を切り替えている
@@ -94,6 +94,11 @@ class BadMagicManager {
 
       case BadMagicType.shiden:
         name = "紫電";
+        break;
+
+      // 6.14
+      case BadMagicType.hellFire:
+        name = "地獄の業火";
         break;
     }
 
