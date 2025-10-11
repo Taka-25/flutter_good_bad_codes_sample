@@ -25,6 +25,7 @@ class BadMember {
   final int magicPoint;
   final int maxHitPoint; // 6.7用のインスタンス変数
   final int level; // 6.12用のインスタンス変数
+  final int agility; // 6.13用のインスタンス変数
 
   BadMember(
     this.hitPoint,
@@ -32,6 +33,7 @@ class BadMember {
     this.magicPoint,
     this.maxHitPoint,
     this.level,
+    this.agility,
   );
 
   // 6.1用メソッド
@@ -114,5 +116,23 @@ class BadMagicManager {
     }
 
     return magicPoint;
+  }
+
+  // 6.13
+  // Bad: switch文で魔法攻撃力を切り替えている
+  int attackPower(BadMagicType magicType, BadMember member) {
+    int attackPower = 0;
+
+    switch (magicType) {
+      case BadMagicType.fire:
+        attackPower = 20 + (member.level * 0.5).toInt();
+        break;
+
+      case BadMagicType.shiden:
+        attackPower = 50 + (member.agility * 1.5).toInt();
+        break;
+    }
+
+    return attackPower;
   }
 }
