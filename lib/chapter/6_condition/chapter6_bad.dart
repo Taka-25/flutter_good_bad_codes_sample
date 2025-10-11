@@ -118,6 +118,11 @@ class BadMagicManager {
       case BadMagicType.shiden:
         magicPoint = 5 + (member.level * 0.2).toInt();
         break;
+
+      // 6.15
+      case BadMagicType.hellFire:
+        magicPoint = 16;
+        break;
     }
 
     return magicPoint;
