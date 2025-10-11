@@ -68,3 +68,25 @@ enum BadHealthConditionEnum { dead, danger, caution, fine }
 
 // 6.10
 enum BadMagicType { fire, shiden }
+
+// 6.11
+// Bad: switch文で表示名を切り替えている
+class BadMagicManager {
+  BadMagicManager();
+
+  String getName(BadMagicType magicType) {
+    String name = "";
+
+    switch (magicType) {
+      case BadMagicType.fire:
+        name = "ファイア";
+
+      case BadMagicType.shiden:
+        name = "紫電";
+
+        break;
+    }
+
+    return name;
+  }
+}
