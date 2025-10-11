@@ -74,6 +74,7 @@ enum BadMagicType { fire, shiden }
 class BadMagicManager {
   BadMagicManager();
 
+  // 6.11
   String getName(BadMagicType magicType) {
     String name = "";
 
