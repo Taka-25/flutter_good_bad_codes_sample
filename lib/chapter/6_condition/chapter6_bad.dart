@@ -23,9 +23,16 @@ class BadMember {
   final int hitPoint;
   final bool canAct;
   final int magicPoint;
-  final int maxHitPoint; // 6.7用の変数
+  final int maxHitPoint; // 6.7用のインスタンス変数
+  final int level; // 6.12用のインスタンス変数
 
-  BadMember(this.hitPoint, this.canAct, this.magicPoint, this.maxHitPoint);
+  BadMember(
+    this.hitPoint,
+    this.canAct,
+    this.magicPoint,
+    this.maxHitPoint,
+    this.level,
+  );
 
   // 6.1用メソッド
   void consumerMagicPoint(int magicPoint) {}
@@ -81,13 +88,31 @@ class BadMagicManager {
     switch (magicType) {
       case BadMagicType.fire:
         name = "ファイア";
+        break;
 
       case BadMagicType.shiden:
         name = "紫電";
-
         break;
     }
 
     return name;
+  }
+
+  // 6.12
+  // Bad: switch文で消費魔法力を切り替えている
+  int costMagicPoint(BadMagicType magicType, BadMember member) {
+    int magicPoint = 0;
+
+    switch (magicType) {
+      case BadMagicType.fire:
+        magicPoint = 2;
+        break;
+
+      case BadMagicType.shiden:
+        magicPoint = 5 + (member.level * 0.2).toInt();
+        break;
+    }
+
+    return magicPoint;
   }
 }
