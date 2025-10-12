@@ -59,6 +59,10 @@ class Member {
   final int magicPoint;
   final int technicalPoint; // 6.5
   final int maxHitPoint;
+  final int level; // 6.18
+  final int agility; // 6.18
+  final int magicAttack; // 6.18
+  final int vitality; // 6.18
 
   Member(
     this.hitPoint,
@@ -66,6 +70,10 @@ class Member {
     this.magicPoint,
     this.technicalPoint,
     this.maxHitPoint,
+    this.level,
+    this.agility,
+    this.magicAttack,
+    this.vitality,
   );
 
   // 6.3用メソッド
@@ -85,14 +93,52 @@ class Magic {
   final int attackPower; // 6.18
   final int costTechnicalPoint; // 6.5
   final int incrementTechnicalPoint; // 6.6
-  Magic(
-    this.name,
-    this.costMagicPoint,
-    this.attackPower,
-    this.costTechnicalPoint,
-    this.incrementTechnicalPoint,
-  );
+
+  Magic._({
+    required this.name,
+    required this.costMagicPoint,
+    required this.attackPower,
+    required this.costTechnicalPoint,
+    required this.incrementTechnicalPoint,
+  });
+
+  // 6.18
+  //（Javaのswitch文のコンストラクタを、Dartでfactoryを使って再現している）
+  // Good: 1つのswitch文ですべて切り替えているため、仕様変更時時の抜け漏れを抑止できる
+  factory Magic(final MagicType magicType, final Member member) {
+    switch (magicType) {
+      case MagicType.fire:
+        return Magic._(
+          name: "ファイア",
+          costMagicPoint: 2,
+          attackPower: 20 + (member.level * 0.5).toInt(),
+          costTechnicalPoint: 0,
+          incrementTechnicalPoint: 0,
+        );
+
+      case MagicType.shiden:
+        return Magic._(
+          name: "紫電",
+          costMagicPoint: 5 + (member.level * 0.2).toInt(),
+          attackPower: 50 + (member.agility * 1.5).toInt(),
+          costTechnicalPoint: 5,
+          incrementTechnicalPoint: 0,
+        );
+
+      case MagicType.hellFire:
+        return Magic._(
+          name: "地獄の業火",
+          costMagicPoint: 16,
+          attackPower: 200 + (member.magicAttack * 0.5).toInt(),
+          costTechnicalPoint: 20 + (member.level * 0.4).toInt(),
+          incrementTechnicalPoint: 0,
+        );
+    }
+  }
 }
+
+// 6.18用のenum
+enum MagicType { fire, shiden, hellFire }
 
 // 6.8
 class HealthCondition {
