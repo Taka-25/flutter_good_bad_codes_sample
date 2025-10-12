@@ -80,11 +80,15 @@ class Member {
 
 // 6.3用クラス
 class Magic {
+  final String name; // 6.18
   final int costMagicPoint;
+  final int attackPower; // 6.18
   final int costTechnicalPoint; // 6.5
   final int incrementTechnicalPoint; // 6.6
   Magic(
+    this.name,
     this.costMagicPoint,
+    this.attackPower,
     this.costTechnicalPoint,
     this.incrementTechnicalPoint,
   );
