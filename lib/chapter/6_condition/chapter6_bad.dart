@@ -151,4 +151,25 @@ class BadMagicManager {
 
     return attackPower;
   }
+
+  // 6.17
+  // Bad: switch文で消費テクニカルポイントを切り替えている
+  int costTechnicalPoint(BadMagicType magicType, BadMember member) {
+    int technicalPoint = 0;
+
+    switch (magicType) {
+      case BadMagicType.fire:
+        technicalPoint = 0;
+        break;
+
+      case BadMagicType.shiden:
+        technicalPoint = 5;
+        break;
+
+      case BadMagicType.hellFire:
+        throw UnimplementedError();
+    }
+
+    return technicalPoint;
+  }
 }
