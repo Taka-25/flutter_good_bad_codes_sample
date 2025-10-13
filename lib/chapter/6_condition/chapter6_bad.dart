@@ -1,7 +1,11 @@
 // 6.1
 // Bad: if文で多重にネストした構造
 // ネストしすぎて可読性が下がっている。保守性も下がる
+// ignore_for_file: unnecessary_cast
+
 import 'dart:math';
+
+import 'package:flutter_good_bad_codes_sample/src/utils/logger/logger.dart';
 
 class BadMagicAttack {
   final BadMember badMember;
@@ -197,4 +201,11 @@ class BadCircle {
   double area() {
     return _radius * pi;
   }
+}
+
+void main() {
+  // 6.21
+  // Bad: 異なる型のため代入できない。エラーになる。同名のメソッドがあっても利用できない。
+  // BadRectangle rectangle = BadCircle(8);
+  // rectangle.area();
 }
