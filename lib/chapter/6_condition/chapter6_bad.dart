@@ -208,4 +208,20 @@ void main() {
   // Bad: 異なる型のため代入できない。エラーになる。同名のメソッドがあっても利用できない。
   // BadRectangle rectangle = BadCircle(8);
   // rectangle.area();
+
+  // 6.22
+  // Bad: 計算はできているが、isで型判定しなければならない
+  void showArea(Object shape) {
+    if (shape is BadRectangle) {
+      Log.d("${(shape as BadRectangle).area()}");
+    }
+
+    if (shape is BadCircle) {
+      Log.d("${(shape as BadCircle).area()}");
+    }
+  }
+
+  // 6.22
+  BadRectangle rectangle = BadRectangle(8, 12);
+  showArea(rectangle);
 }
