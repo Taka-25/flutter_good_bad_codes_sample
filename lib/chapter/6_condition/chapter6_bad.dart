@@ -1,6 +1,8 @@
 // 6.1
 // Bad: if文で多重にネストした構造
 // ネストしすぎて可読性が下がっている。保守性も下がる
+import 'dart:math';
+
 class BadMagicAttack {
   final BadMember badMember;
   final BadMagic badMagic;
@@ -171,5 +173,28 @@ class BadMagicManager {
     }
 
     return technicalPoint;
+  }
+}
+
+// 6.19
+class BadRectangle {
+  final double _width;
+  final double _height;
+
+  BadRectangle(this._width, this._height);
+
+  double area() {
+    return _width * _height;
+  }
+}
+
+// 6.19
+class BadCircle {
+  final double _radius;
+
+  BadCircle(this._radius);
+
+  double area() {
+    return _radius * pi;
   }
 }

@@ -1,5 +1,7 @@
 // Good: 早期returnでネスト解消している
 // これにより可読性・保守性が上がっている
+import 'dart:math';
+
 class MagicAttack {
   final Member member;
   final Magic magic;
