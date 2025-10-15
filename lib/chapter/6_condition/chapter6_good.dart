@@ -180,3 +180,28 @@ enum HealthConditionEnum { dead, danger, caution, fine }
 abstract class Shape {
   double area();
 }
+
+// 6.24
+class Rectangle implements Shape {
+  final double _width;
+  final double _height;
+
+  Rectangle(this._width, this._height);
+
+  @override
+  double area() {
+    return _width * _height;
+  }
+}
+
+// 6.24
+class Circle implements Shape {
+  final double _radius;
+
+  Circle(this._radius);
+
+  @override
+  double area() {
+    return _radius * pi;
+  }
+}
