@@ -2,6 +2,8 @@
 // これにより可読性・保守性が上がっている
 import 'dart:math';
 
+import 'package:flutter_good_bad_codes_sample/src/utils/logger/logger.dart';
+
 class MagicAttack {
   final Member member;
   final Magic magic;
@@ -204,4 +206,13 @@ class Circle implements Shape {
   double area() {
     return _radius * pi;
   }
+}
+
+void main() {
+  // 6.25
+  Shape shape = Circle(10);
+  Log.d("${(shape.area())}");
+
+  shape = Rectangle(20, 25);
+  Log.d("${(shape.area())}");
 }
