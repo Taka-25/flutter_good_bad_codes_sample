@@ -175,3 +175,8 @@ class HealthCondition {
 
 // 6.8用enum
 enum HealthConditionEnum { dead, danger, caution, fine }
+
+// 6.23
+abstract class Shape {
+  double area();
+}
