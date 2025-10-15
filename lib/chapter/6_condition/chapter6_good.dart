@@ -215,4 +215,13 @@ void main() {
 
   shape = Rectangle(20, 25);
   Log.d("${(shape.area())}");
+
+  // 6.26
+  // Good: 型判定のif文が不要になった
+  void showArea(Shape shape) {
+    Log.d("${(shape.area())}");
+  }
+
+  Rectangle rectangle = Rectangle(8, 12);
+  showArea(rectangle);
 }
