@@ -232,15 +232,26 @@ void main() {
 
 // 6.28
 abstract class InterfaceMagic {
-  final String name;
-  final int costMagicPoint;
-  final int attackPower;
-  final int costTechnicalPoint;
+  String get name;
+  int get costMagicPoint;
+  int get attackPower;
+  int get costTechnicalPoint;
+}
 
-  InterfaceMagic(
-    this.name,
-    this.costMagicPoint,
-    this.attackPower,
-    this.costTechnicalPoint,
-  );
+class Fire implements InterfaceMagic {
+  final Member _member;
+
+  Fire(this._member);
+
+  @override
+  String get name => "ファイア";
+
+  @override
+  int get costMagicPoint => 2;
+
+  @override
+  int get attackPower => 20 + (_member.level * 0.5).toInt();
+
+  @override
+  int get costTechnicalPoint => 0;
 }
