@@ -225,3 +225,18 @@ void main() {
   Rectangle rectangle = Rectangle(8, 12);
   showArea(rectangle);
 }
+
+// 6.28
+abstract class InterfaceMagic {
+  final String name;
+  final int costMagicPoint;
+  final int attackPower;
+  final int costTechnicalPoint;
+
+  InterfaceMagic(
+    this.name,
+    this.costMagicPoint,
+    this.attackPower,
+    this.costTechnicalPoint,
+  );
+}
