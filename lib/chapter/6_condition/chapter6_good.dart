@@ -226,6 +226,10 @@ void main() {
   showArea(rectangle);
 }
 
+// 6.28, 6.29, 6.30の補足
+// 抽象クラスの運用は基本的に「インターフェース的抽象クラス」と「抽象基底クラス的抽象クラス」がある。
+// 前者はgetterを実装し外部から変更はできない。後者はgetterではなく変数を実装することで、外部から変更できてしまう。基本的に前者で実装するのが望ましい
+
 // 6.28
 abstract class InterfaceMagic {
   final String name;
