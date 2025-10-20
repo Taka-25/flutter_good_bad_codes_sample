@@ -238,6 +238,7 @@ abstract class InterfaceMagic {
   int get costTechnicalPoint;
 }
 
+// 6.29
 class Fire implements InterfaceMagic {
   final Member _member;
 
