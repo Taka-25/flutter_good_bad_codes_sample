@@ -256,3 +256,22 @@ class Fire implements InterfaceMagic {
   @override
   int get costTechnicalPoint => 0;
 }
+
+// 6.30
+class Shiden implements InterfaceMagic {
+  final Member _member;
+
+  Shiden(this._member);
+
+  @override
+  String get name => "紫電";
+
+  @override
+  int get costMagicPoint => 5 + (_member.level * 0.2).toInt();
+
+  @override
+  int get attackPower => 50 + (_member.agility * 1.5).toInt();
+
+  @override
+  int get costTechnicalPoint => 5;
+}
