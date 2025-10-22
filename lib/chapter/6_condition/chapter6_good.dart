@@ -275,3 +275,23 @@ class Shiden implements InterfaceMagic {
   @override
   int get costTechnicalPoint => 5;
 }
+
+// 6.31
+class HellFire implements InterfaceMagic {
+  final Member _member;
+
+  HellFire(this._member);
+
+  @override
+  String get name => "地獄の業火";
+
+  @override
+  int get costMagicPoint => 16;
+
+  @override
+  int get attackPower =>
+      200 + (_member.magicAttack * 0.5 + _member.vitality * 2).toInt();
+
+  @override
+  int get costTechnicalPoint => 20 + (_member.level * 0.4).toInt();
+}
