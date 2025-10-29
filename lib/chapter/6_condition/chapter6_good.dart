@@ -1,5 +1,6 @@
 // Good: 早期returnでネスト解消している
 // これにより可読性・保守性が上がっている
+import 'dart:collection';
 import 'dart:math';
 
 import 'package:flutter_good_bad_codes_sample/src/utils/logger/logger.dart';
@@ -294,4 +295,19 @@ class HellFire implements InterfaceMagic {
 
   @override
   int get costTechnicalPoint => 20 + (_member.level * 0.4).toInt();
+}
+
+// 6.32
+// ストラテジパターンをDartで再現
+class MagicFactory {
+  final Map<MagicType, InterfaceMagic> magics;
+
+  MagicFactory(Member member)
+    : magics = {
+        MagicType.fire: Fire(member),
+        MagicType.shiden: Shiden(member),
+        MagicType.hellFire: HellFire(member),
+      };
+
+  InterfaceMagic? get(MagicType type) => magics[type];
 }
