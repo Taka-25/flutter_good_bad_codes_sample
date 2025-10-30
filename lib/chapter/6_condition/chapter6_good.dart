@@ -311,3 +311,13 @@ class MagicFactory {
 
   InterfaceMagic? get(MagicType type) => magics[type];
 }
+
+void main2() {
+  // 6.33
+  // ignore: unused_element
+  void magicAttack(final Member member, MagicType magicType) {
+    final factory = MagicFactory(member);
+    final InterfaceMagic? usingMagic = factory.get(magicType);
+    usingMagic!.attackPower;
+  }
+}
