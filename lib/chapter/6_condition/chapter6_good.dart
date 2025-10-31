@@ -310,6 +310,36 @@ class MagicFactory {
       };
 
   InterfaceMagic? get(MagicType type) => magics[type];
+
+  // 6.34
+  void magicAttack(MagicType magicType) {
+    final InterfaceMagic? usingMagic = get(magicType);
+    usingMagic!.attackPower;
+  }
+
+  void showMagicName(final InterfaceMagic magic) {
+    // ignore: unused_local_variable
+    final String name = magic.name;
+    // nameを使った表示処理
+  }
+
+  void consumeMagicPoint(final InterfaceMagic magic) {
+    // ignore: unused_local_variable
+    final int costMagicPoint = magic.costMagicPoint;
+    // costMagicPointを使った魔法力消費処理
+  }
+
+  void consumeTechnicalPoint(final InterfaceMagic magic) {
+    // ignore: unused_local_variable
+    final int costTechnicalPoint = magic.costTechnicalPoint;
+    // costTechnicalPointを使ったテクニカルポイント消費処理
+  }
+
+  void magicDamage(final InterfaceMagic magic) {
+    // ignore: unused_local_variable
+    final int attackPower = magic.attackPower;
+    // attackPowerを使ったダメージ計算
+  }
 }
 
 void main2() {
