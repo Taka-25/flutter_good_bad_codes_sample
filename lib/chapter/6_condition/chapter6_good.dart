@@ -351,3 +351,18 @@ void main2() {
     usingMagic!.attackPower;
   }
 }
+
+// 6.37
+// Good: 値オブジェクト化されており、意図の異なる値を渡してしまうことを懐疑
+abstract class ValueObjectMagic {
+  String get name;
+  MagicPoint get costMagicPoint;
+  AttackPower get attackPower;
+  TechnicalPoint get costTechnicalPoint;
+}
+
+class MagicPoint {}
+
+class AttackPower {}
+
+class TechnicalPoint {}
