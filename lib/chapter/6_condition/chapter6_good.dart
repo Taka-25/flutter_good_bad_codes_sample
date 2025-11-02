@@ -361,8 +361,42 @@ abstract class ValueObjectMagic {
   TechnicalPoint get costTechnicalPoint;
 }
 
-class MagicPoint {}
+class MagicPoint {
+  final int value;
 
-class AttackPower {}
+  MagicPoint({required this.value});
+}
 
-class TechnicalPoint {}
+class AttackPower {
+  final int value;
+
+  AttackPower({required this.value});
+}
+
+class TechnicalPoint {
+  final int value;
+
+  TechnicalPoint({required this.value});
+}
+
+// 6.38
+class ValueObjectFire implements ValueObjectMagic {
+  final Member _member;
+
+  ValueObjectFire(this._member);
+
+  @override
+  String get name => "ファイア";
+
+  @override
+  MagicPoint get costMagicPoint => MagicPoint(value: 2);
+
+  @override
+  AttackPower get attackPower {
+    final int value = 20 + (_member.level * 0.5).toInt();
+    return AttackPower(value: value);
+  }
+
+  @override
+  TechnicalPoint get costTechnicalPoint => TechnicalPoint(value: 0);
+}
