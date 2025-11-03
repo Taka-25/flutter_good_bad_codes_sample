@@ -383,7 +383,7 @@ class TechnicalPoint {
 class ValueObjectFire implements ValueObjectMagic {
   final Member _member;
 
-  ValueObjectShiden(this._member);
+  ValueObjectFire(this._member);
 
   @override
   String get name => "ファイア";
@@ -412,7 +412,7 @@ class ValueObjectShiden implements ValueObjectMagic {
 
   @override
   MagicPoint get costMagicPoint {
-    final int  value = 5 + (_member.level *0.2 ).toInt();
+    final int value = 5 + (_member.level * 0.2).toInt();
     return MagicPoint(value: value);
   }
 
