@@ -425,3 +425,31 @@ class ValueObjectShiden implements ValueObjectMagic {
   @override
   TechnicalPoint get costTechnicalPoint => TechnicalPoint(value: 5);
 }
+
+// 6.40
+class ValueObjectHellFire implements ValueObjectMagic {
+  final Member _member;
+
+  ValueObjectHellFire(this._member);
+
+  @override
+  String get name => "地獄の業火";
+
+  @override
+  MagicPoint get costMagicPoint {
+    return MagicPoint(value: 16);
+  }
+
+  @override
+  AttackPower get attackPower {
+    final int value =
+        200 + (_member.magicAttack * 0.5 + _member.vitality * 2).toInt();
+    return AttackPower(value: value);
+  }
+
+  @override
+  TechnicalPoint get costTechnicalPoint {
+    final int value = 20 + (_member.level * 0.4).toInt();
+    return TechnicalPoint(value: value);
+  }
+}
