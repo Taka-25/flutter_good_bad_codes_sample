@@ -225,3 +225,29 @@ void main() {
   BadRectangle rectangle = BadRectangle(8, 12);
   showArea(rectangle);
 }
+
+// 6.41
+// Bad: if文が多重にネストしており、可読性が低い
+bool isGoldCustomer(PurchaseHistory history) {
+  if (100000 <= history.totalAmount) {
+    if (10 <= history.purchaseFrequencyPerMonth) {
+      if (history.returnRate <= 0.001) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+// 6.41用クラス
+class PurchaseHistory {
+  final int totalAmount;
+  final int purchaseFrequencyPerMonth;
+  final double returnRate;
+
+  PurchaseHistory(
+    this.totalAmount,
+    this.purchaseFrequencyPerMonth,
+    this.returnRate,
+  );
+}
