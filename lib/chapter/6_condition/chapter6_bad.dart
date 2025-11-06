@@ -239,7 +239,7 @@ bool isGoldCustomer(PurchaseHistory history) {
   return false;
 }
 
-// 6.41用クラス
+// 6.41, 6.42用クラス
 class PurchaseHistory {
   final int totalAmount;
   final int purchaseFrequencyPerMonth;
