@@ -251,3 +251,14 @@ class PurchaseHistory {
     this.returnRate,
   );
 }
+
+// 6.42
+bool isSilverCustomer(PurchaseHistory history) {
+  if (10 <= history.purchaseFrequencyPerMonth) {
+    if (history.returnRate <= 0.001) {
+      return true;
+    }
+  }
+
+  return false;
+}
