@@ -453,3 +453,21 @@ class ValueObjectHellFire implements ValueObjectMagic {
     return TechnicalPoint(value: value);
   }
 }
+
+// 6.43用クラス
+class PurchaseHistory {
+  final int totalAmount;
+  final int purchaseFrequencyPerMonth;
+  final double returnRate;
+
+  PurchaseHistory(
+    this.totalAmount,
+    this.purchaseFrequencyPerMonth,
+    this.returnRate,
+  );
+}
+
+// 6.43
+abstract class ExcellentCustomerRule {
+  bool ok(final PurchaseHistory purchaseHistory);
+}
