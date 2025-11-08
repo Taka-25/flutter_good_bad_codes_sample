@@ -471,3 +471,11 @@ class PurchaseHistory {
 abstract class ExcellentCustomerRule {
   bool ok(final PurchaseHistory purchaseHistory);
 }
+
+// 6.44
+class GoldCustomerPurchaseAmountRule implements ExcellentCustomerRule {
+  @override
+  bool ok(final PurchaseHistory history) {
+    return 100000 >= history.totalAmount;
+  }
+}
