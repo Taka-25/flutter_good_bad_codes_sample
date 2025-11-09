@@ -479,3 +479,10 @@ class GoldCustomerPurchaseAmountRule implements ExcellentCustomerRule {
     return 100000 >= history.totalAmount;
   }
 }
+// 6.45
+class PurchaseFrequencyRule implements ExcellentCustomerRule {
+  @override
+  bool ok(final PurchaseHistory history) {
+    return 10 <= history.purchaseFrequencyPerMonth;
+  }
+}
