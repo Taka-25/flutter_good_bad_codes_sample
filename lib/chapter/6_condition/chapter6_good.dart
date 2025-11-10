@@ -486,3 +486,10 @@ class PurchaseFrequencyRule implements ExcellentCustomerRule {
     return 10 <= history.purchaseFrequencyPerMonth;
   }
 }
+// 6.46
+class ReturnRateRule implements ExcellentCustomerRule {
+  @override
+  bool ok(final PurchaseHistory history) {
+    return history.returnRate <= 0.01;
+  }
+}
