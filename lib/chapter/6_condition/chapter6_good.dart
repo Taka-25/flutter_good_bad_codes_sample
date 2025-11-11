@@ -479,6 +479,7 @@ class GoldCustomerPurchaseAmountRule implements ExcellentCustomerRule {
     return 100000 >= history.totalAmount;
   }
 }
+
 // 6.45
 class PurchaseFrequencyRule implements ExcellentCustomerRule {
   @override
@@ -486,10 +487,32 @@ class PurchaseFrequencyRule implements ExcellentCustomerRule {
     return 10 <= history.purchaseFrequencyPerMonth;
   }
 }
+
 // 6.46
 class ReturnRateRule implements ExcellentCustomerRule {
   @override
   bool ok(final PurchaseHistory history) {
     return history.returnRate <= 0.01;
+  }
+}
+
+// 6.47
+class ExcellentCustomerPolicy {
+  final Set<ExcellentCustomerRule> rules;
+
+  ExcellentCustomerPolicy({Set<ExcellentCustomerRule>? rules})
+    : rules = rules ?? <ExcellentCustomerRule>{};
+
+  void addRule(final ExcellentCustomerRule rule) {
+    rules.add(rule);
+  }
+
+  bool complyWithAll(final PurchaseHistory history) {
+    for (ExcellentCustomerRule each in rules) {
+      if (!each.ok(history)) {
+        return false;
+      }
+    }
+    return true;
   }
 }
