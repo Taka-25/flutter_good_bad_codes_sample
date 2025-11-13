@@ -503,7 +503,7 @@ class ExcellentCustomerPolicy {
   ExcellentCustomerPolicy({Set<ExcellentCustomerRule>? rules})
     : rules = rules ?? <ExcellentCustomerRule>{};
 
-  void addRule(final ExcellentCustomerRule rule) {
+  void add(final ExcellentCustomerRule rule) {
     rules.add(rule);
   }
 
@@ -515,4 +515,14 @@ class ExcellentCustomerPolicy {
     }
     return true;
   }
+}
+
+// 6.48
+// Not Bad: ロジックか単純化したが、ゴールド会員以外の無関係なロジックを差し込まれてしまう可能性がある
+void main3() {
+  ExcellentCustomerPolicy goldCustomerPolicy = ExcellentCustomerPolicy();
+  goldCustomerPolicy.add(GoldCustomerPurchaseAmountRule());
+  goldCustomerPolicy.add(PurchaseFrequencyRule());
+  goldCustomerPolicy.add(ReturnRateRule());
+  goldCustomerPolicy.complyWithAll(PurchaseHistory(150000, 12, 0.0));
 }
